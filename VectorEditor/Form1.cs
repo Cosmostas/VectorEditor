@@ -39,15 +39,31 @@ namespace VectorEditor
 
         public void AddPoint(Point mouseLocation)
         {
+
             if (Control.ModifierKeys == Keys.Shift)
             {
-                if (mouseLocation.X - prevPoint.X > mouseLocation.Y - prevPoint.Y)
+                if (Math.Abs(mouseLocation.X - prevPoint.X) > Math.Abs(mouseLocation.Y - prevPoint.Y))
                 {
-                    mouseLocation.X = prevPoint.X + (mouseLocation.Y - prevPoint.Y);
+                    if(mouseLocation.X - prevPoint.X > 0)
+                    {
+                        mouseLocation.X = prevPoint.X + Math.Abs(mouseLocation.Y - prevPoint.Y);
+                    }
+                    else
+                    {
+                        mouseLocation.X = prevPoint.X - Math.Abs(mouseLocation.Y - prevPoint.Y);
+                    }
+                  
                 }
                 else
                 {
-                    mouseLocation.Y = prevPoint.Y + (mouseLocation.X - prevPoint.X);
+                    if(mouseLocation.Y - prevPoint.Y > 0)
+                    {
+                        mouseLocation.Y = prevPoint.Y + Math.Abs(mouseLocation.X - prevPoint.X);
+                    }
+                    else
+                    {
+                        mouseLocation.Y = prevPoint.Y - Math.Abs(mouseLocation.X - prevPoint.X);
+                    }
                 }
             }
 
@@ -93,17 +109,6 @@ namespace VectorEditor
             graphics = Graphics.FromImage(mainBm);
             prevPoint = new Point(0, 0);
             fig = new List<Figure>();
-        }
-
-        private void Form1_KeyDown(object sender, KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.Z && e.Modifiers == Keys.Control)
-            {
-                fig.RemoveAt(fig.Count - 1);
-                Paint();
-            }
-
-            SettingsTools.Text = e.KeyCode.ToString();
         }
     }   
 }
