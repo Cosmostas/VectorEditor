@@ -22,12 +22,12 @@ namespace VectorEditor
             EndLine = lastLocation;
         }
 
-        public List<Point> getNode()
+        public List<Point> GetPoints()
         {
             return new List<Point>(2) { BeginLine, EndLine };
         }
 
-        public void SetPoint(Point firstLocation, Point lastLocation)
+        public void SetPoints(Point firstLocation, Point lastLocation)
         {
             BeginLine = firstLocation;
             EndLine = lastLocation;
