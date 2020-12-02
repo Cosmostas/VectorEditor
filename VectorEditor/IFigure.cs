@@ -9,7 +9,7 @@ namespace VectorEditor
 {
     public interface IFigure
     {
-        List<Point> getNode();
-        void SetPoint(Point firstLocation, Point lastLocation);
+        List<Point> GetPoints();
+        void SetPoints(Point firstLocation, Point lastLocation);
     }
 }
